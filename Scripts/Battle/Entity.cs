@@ -16,7 +16,7 @@ public struct StatModifier {
 
 public abstract class Entity {
 	private string Name {get;}
-	int Dictionary<Stats, int> StatTable = new Dictionary<Stats, int>();
+	int Dictionary<Stats, int> StatTable = new Dictionary<Stats, int>() {get;}
 	StatModifier[] Modifiers = new StatModifier[];
 	boolean IsDead = false {get;}	
 
@@ -59,7 +59,7 @@ public class PlayerEntity : Entity {
 	Item Potion {get; set;}
 	Item Armor {get; set;}
 	Item Weapon {get; set;}
-	private boolean goesFirst = false;
+	private boolean goesFirst = false; //in every battle the enemy will go first unless the player has a Potion of Getting Schwifty
 
 	public PlayerEntity() {
 		Name = "Player";
