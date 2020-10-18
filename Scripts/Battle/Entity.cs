@@ -98,7 +98,7 @@ public class TheTankEntity : Entity {
 	}
 
 	public damageEntity(int damage) {
-		StatTable[HP] -= 1; //The Tank takes 1 damage from every attack
+		StatTable[HP] -= damage/2; //The Tank takes half damage from every attack
 		
 		if (StatTable[HP] <= 0){
 			StatTable[HP] = 0;
