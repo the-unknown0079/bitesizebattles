@@ -16,14 +16,14 @@ public struct StatModifier {
 
 public abstract class Entity {
 	private string Name {get;}
-	int Dictionary<Stats, int> StatTable = new Dictionary<Stats, int>() {get;}
-	StatModifier[] Modifiers = new StatModifier[];
-	boolean IsDead = false {get;}	
+	int Dictionary<Stats stat, int value> StatTable = new Dictionary<Stats stat, int value>() {get;}
+	List<StatModifier> Modifiers = new List<StatModifier>;
+	private boolean IsDead {get;}	
 
 	public int getModifierTotalForStat(Stats stat) {//get all modifiers to a stat for things like damage calculations
 		int total = 0;
 		
-		for (StatModifier statModifier in Modifiers) {
+		foreach (StatModifier statModifier in Modifiers) {
 			if (statModifier.GetStat() == stat) {
 				total += statModifier.getModifier();	
 			}
@@ -66,6 +66,7 @@ public class PlayerEntity : Entity {
 		StatTable.Add(HP, 10);
 		StatTable.Add(Attack, 0);
 		StatTable.Add(Defense, 0);
+		isDead = false;
 	}
 }
 
@@ -76,6 +77,7 @@ public class GenericSlimeEnemyEntity : Entity {
 		StatTable.Add(HP, 20);
 		StatTable.Add(Attack, 10);
 		StatTable.Add(Defense, 0);
+		isDead = false;
 	}
 }
 
@@ -85,6 +87,7 @@ public class WeebBaitEntity : Entity {
 		StatTable.Add(HP, 25);
 		StatTable.Add(Attack, 20);
 		StatTable.Add(Defense, 5);
+		isDead = false;
 	}
 }
 
@@ -95,6 +98,7 @@ public class TheTankEntity : Entity {
 		StatTable.Add(HP, 25);
 		StatTable.Add(Attack, 30);
 		StatTable.Add(Defense, 420); 
+		isDead = false;
 	}
 
 	public damageEntity(int damage) {
